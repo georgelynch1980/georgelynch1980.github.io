@@ -9,15 +9,17 @@
     
 </head>
 <body>
-    <div tabindex="0"  aria-label="歡迎來到個人頁"><img style="width: 50px;height: auto;" src=" https://cdn-icons-png.flaticon.com/512/556/556813.png" alt=""></div>
+    <div tabindex="0" aria-rowindex="1"  aria-label="歡迎來到個人頁"><img style="width: 50px;height: auto;" src=" https://cdn-icons-png.flaticon.com/512/556/556813.png" alt=""></div>
     <br>
 
     <div style="position: absolute;overflow: hidden;white-space: nowrap;height: 1px;width: 1px;">我的保單數999張</div>
     
-    <div aria-hidden="true">999</div>
+    <div aria-hidden="true" >999</div>
+
+    <div  tabindex="-1">999</div>
     
     <br>
-    <a aria-label="查閱我的保單">
+    <a aria-label="查閱我的保單"  aria-rowindex="2">
         <img width="15px;" src="https://cdn-icons-png.flaticon.com/512/271/271220.png" alt="">
         查閱我的保單
     </a>
@@ -25,12 +27,12 @@
         <img width="15px;" src="https://cdn-icons-png.flaticon.com/512/271/271220.png" alt="">
         查閱我的保單1
     </a>
-    <a  tabindex="2" aria-label="查閱我的保單">
+    <a  tabindex="2" aria-label="查閱我的保單"  aria-rowindex="3">
         <img width="15px;" src="https://cdn-icons-png.flaticon.com/512/271/271220.png" alt="">
         查閱我的保單2
     </a>
 
-    <a  tabindex="3" aria-label="查閱我的保單">
+    <a  tabindex="3" aria-label="查閱我的保單"  aria-rowindex="4">
         <img width="15px;" src="https://cdn-icons-png.flaticon.com/512/271/271220.png" alt="">
         查閱我的保單3
     </a>
@@ -39,13 +41,14 @@
     <div aria-hidden="true"><img style="width: 50px;height: auto;" src=" https://cdn-icons-png.flaticon.com/512/556/556813.png" alt=""></div>
     
 
-    <input type="text" aria-label="姓名">
+    <input type="text" aria-label="姓名" aria-rowindex="5">
 
     <label for="name">姓名:</label>
     <input
       type="text"
       name="name"
       id="name"      
+      tabindex="4"
       aria-labelledby="billing 姓名"
     />
     
