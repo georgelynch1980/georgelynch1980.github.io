@@ -124,7 +124,7 @@
     </table>
 
 
-    <div class="status" aria-live="polite"> 您的訊息已經送出。</div>
+    <div class="status" aria-live="off"> 您的訊息已經送出。</div>
 
 
     <div class="btn">開啟</div>
@@ -136,6 +136,8 @@
         $(".btn").click(function () {
             console.log("show");
             $(".status").show();
+            document.querySelector(".status").setAttribute("aria-live", "polite");
+
         });
 
 
