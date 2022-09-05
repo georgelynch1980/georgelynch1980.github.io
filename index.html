@@ -129,6 +129,26 @@
 
 
         <div class="btn">開啟</div>
+        
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">我們來看 Bootstrap 4.3 Navbar 的可訪問性</a>
+        <!-- 1. 按鈕角色、3. 定義按鈕能觸發選單、4. 建立選單與按鈕之間的關聯、加上 aria-haspopup -->
+        <!-- a. 注意細節: aria-label -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation" aria-haspopup="menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        <!-- 5. 選單角色 -->
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup" role="menu">
+        <div class="navbar-nav">
+                <!-- b. 注意細節: 移除 .sr-only 改成 aria-current -->
+          <a class="nav-item nav-link active" href="#" aria-current="page">Home</a>
+          <a class="nav-item nav-link" href="#">Features</a>
+          <a class="nav-item nav-link" href="#">Pricing</a>
+                <!-- c. 注意細節: disabled 的處理 -->
+          <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </div>
+      </div>
+    </nav>
     </main>
 
 
