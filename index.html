@@ -9,15 +9,15 @@
 
     <style>
         .aria-hidden {
-            position: absolute; 
-            white-space: nowrap; 
-            width: 1px; 
-            height: 1px; 
+            position: absolute;
+            white-space: nowrap;
+            width: 1px;
+            height: 1px;
             overflow: hidden;
             border: 0;
-            padding: 0; 
-            clip: rect(0 0 0 0); 
-            clip-path: inset(50%); 
+            padding: 0;
+            clip: rect(0 0 0 0);
+            clip-path: inset(50%);
             margin: -1px;
 
         }
@@ -31,13 +31,13 @@
                 src=" https://cdn-icons-png.flaticon.com/512/556/556813.png" alt=""></div>
         <br>
 
-       
+
 
         <div class="aria-hidden">我的保單數999張</div>
 
         <div aria-hidden="true">999</div>
 
-        
+
 
         <br>
         <a aria-label="查閱我的保單" aria-rowindex="2">
@@ -63,24 +63,29 @@
                 src=" https://cdn-icons-png.flaticon.com/512/556/556813.png" alt=""></div>
 
 
-      
-
-
-       
 
 
 
 
-        <button type="button" class="btn">a alert</button>
-        
 
-        <div id="expirationWarning" role="dialog" aria-labelledby="dialog1Title" aria-describedby="dialog1Desc" aria-modal="true">
-            <h2 tabindex="0" id="dialog1Title">訊息</h2>
-            <p tabindex="0" id="dialog1Desc">您的訊息已經送出。</p>
-            <button>Close</button>
-          </div>
 
-          
+
+
+        <button type="button" class="btn">xx对话框</button>
+
+
+
+
+        <section id="expirationWarning" role="dialog" aria-modal="true" aria-labelledby="dialog1Title"
+            aria-describedby="dialog1Desc" aria-label="xx对话框" tabindex="-1">
+            <h1 id="dialog1Title">标题内容</h1>
+            <p id="dialog1Desc">您的訊息已經送出。</p>
+            <button>關閉</button>
+        </section>
+
+
+
+
     </main>
 
 
@@ -91,7 +96,10 @@
         $(".btn").click(function () {
             $("#expirationWarning").attr("role", "alert");
             $("#expirationWarning").show();
-           
+            $("#dialog1Desc").focus();
+            setTimeout(function () {
+                $("#dialog1Desc").focus();
+            }, 500)
 
         });
 
