@@ -8,8 +8,18 @@
     <title>個人頁</title>
 
     <style>
-        .hidden {
-            display: none;
+        .aria-hidden {
+            position: absolute; 
+            white-space: nowrap; 
+            width: 1px; 
+            height: 1px; 
+            overflow: hidden;
+            border: 0;
+            padding: 0; 
+            clip: rect(0 0 0 0); 
+            clip-path: inset(50%); 
+            margin: -1px;
+
         }
     </style>
 
@@ -21,14 +31,13 @@
                 src=" https://cdn-icons-png.flaticon.com/512/556/556813.png" alt=""></div>
         <br>
 
-        <div class="btn">開啟</div>
-        <br>
+       
 
-        <div style="position: absolute;overflow: hidden;white-space: nowrap;height: 1px;width: 1px;">我的保單數999張</div>
+        <div class="aria-hidden">我的保單數999張</div>
 
         <div aria-hidden="true">999</div>
 
-        <div tabindex="-1">999</div>
+        
 
         <br>
         <a aria-label="查閱我的保單" aria-rowindex="2">
@@ -54,85 +63,22 @@
                 src=" https://cdn-icons-png.flaticon.com/512/556/556813.png" alt=""></div>
 
 
-        <input type="text" aria-label="姓名" aria-rowindex="5">
-
-        <label for="name">姓名:</label>
-        <input type="text" name="name" id="name" tabindex="4" aria-labelledby="billing 姓名" />
-
-        <header role="banner"></header>
-        <nav role="navigation"></nav>
-        <main role="main"></main>
-        <aside role="complementary"></aside>
-        <footer role="contentinfo"></footer>
-
-        <button role="button" disabled aria-disabled="true">送出</button>
-        <button role="button" disabled>送出</button>
-        <button disabled>送出</button>
-        <button>送出</button>
-
-        <input role="combobox" type="checkbox" id="cbox1" value="first_checkbox">
-        <label for="cbox1">This is the first checkbox</label>
+      
 
 
-
-        <table role="table">
-
-            <tr role="columnheader">
-                <th>姓名</th>
-                <th>身高</th>
-            </tr>
-            <tr role="row">
-                <td aria-label="姓名" role="cell">george1</td>
-                <td aria-label="身高" role="cell">171</td>
-            </tr>
-            <tr role="row">
-                <td aria-label="姓名" role="cell">george2</td>
-                <td aria-label="身高" role="cell">172</td>
-            </tr>
-            <tr role="row">
-                <td aria-label="姓名" role="cell">george3</td>
-                <td aria-label="身高" role="cell">173</td>
-            </tr>
-            <tr role="row">
-                <td aria-label="姓名" role="cell">george4</td>
-                <td aria-label="身高" role="cell">174</td>
-            </tr>
-            <tr role="row">
-                <td aria-label="姓名" role="cell">george5</td>
-                <td aria-label="身高" role="cell">175</td>
-            </tr>
-        </table>
-
-        <table role="table">
-
-            <tr>
-                <th>姓名</th>
-                <th>身高</th>
-            </tr>
-            <tr>
-                <td>george1</td>
-                <td>171</td>
-            </tr>
-            <tr>
-                <td>george2</td>
-                <td>172</td>
-            </tr>
-            <tr>
-                <td>george3</td>
-                <td>173</td>
-            </tr>
-            <tr>
-                <td>george4</td>
-                <td>174</td>
-            </tr>
-
-        </table>
+       
 
 
 
 
         <button type="button" class="btn">a Trigger alert</button>
-        <p id="expirationWarning" class="alert hidden">您的訊息已經送出。</p>
+        
+
+        <div id="expirationWarning" role="dialog" aria-labelledby="dialog1Title" aria-describedby="dialog1Desc">
+            <h2 id="dialog1Title">訊息</h2>
+            <p id="dialog1Desc">您的訊息已經送出。</p>
+            <button>Close</button>
+          </div>
     </main>
 
 
@@ -143,7 +89,7 @@
         $(".btn").click(function () {
             $("#expirationWarning").attr("role", "alert");
             $("#expirationWarning").show();
-
+            $( "#target" ).focus();
 
         });
 
