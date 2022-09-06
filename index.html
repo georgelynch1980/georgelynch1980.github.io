@@ -74,7 +74,7 @@
 
 
 
-        <button type="button" class="btn">開啟dialog 4444</button>
+        <button type="button" class="btn">開啟dialog 5555</button>
 
 
 
@@ -99,7 +99,7 @@
         $(".btn").click(function () {
             $("#expirationWarning").show();
             var div = document.getElementById("dialog1Desc");
-            div.tabIndex = 0;
+            div.tabIndex = -1;
             div.focus();
         });
 
@@ -113,7 +113,7 @@
         setTimeout(function(){
             $("#expirationWarning").show();
             var div = document.getElementById("dialog1Desc");
-            div.tabIndex = 0;
+            div.tabIndex = -1;
             div.focus();
         },3000)
 
