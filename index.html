@@ -79,7 +79,8 @@
 
 
 
-        <section id="expirationWarning" role="dialog" aria-modal="true">
+        <section id="expirationWarning" role="dialog" aria-modal="true" aria-labelledby="dialog1Title"
+            aria-describedby="dialog1Desc" tabindex="-1">
             <h1 id="dialog1Title">標題内容</h1>
             <p id="dialog1Desc">您的訊息已經送出。</p>
             <button class="close_btn">關閉</button>
@@ -98,7 +99,7 @@
         $(".btn").click(function () {
             $("#expirationWarning").show();
             var div = document.getElementById("dialog1Desc");
-            div.tabIndex = -1;
+            div.tabIndex = 0;
             div.focus();
         });
 
@@ -112,7 +113,7 @@
         setTimeout(function(){
             $("#expirationWarning").show();
             var div = document.getElementById("dialog1Desc");
-            div.tabIndex = -1;
+            div.tabIndex = 0;
             div.focus();
         },3000)
 
