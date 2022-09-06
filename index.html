@@ -9,7 +9,7 @@
 
     <style>
         .hidden {
-          display:none;
+            display: none;
         }
     </style>
 
@@ -129,35 +129,25 @@
         </table>
 
 
-        <div class="status" role="alertdialog" aria-live="off"> 您的訊息已經送出。</div>
 
 
-        
-        
-        <button type="button">a Trigger alert</button>
-<p id="expirationWarning" class="alert hidden">The alert will trigger when the button is pressed.</p>
+        <button type="button" class="btn">a Trigger alert</button>
+        <p id="expirationWarning" class="alert hidden">您的訊息已經送出。</p>
     </main>
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
 
-        $(".status").hide();
+
         $(".btn").click(function () {
-            console.log("show");
-            $(".status").show();
-            document.querySelector(".status").setAttribute("aria-live", "assertive");
+            $("#expirationWarning").attr("role", "alert");
+            $("#expirationWarning").show();
+
 
         });
-        
-        const btn = document.querySelector('button');
-        btn.addEventListener('click', triggerAlert);
 
-        function triggerAlert() {
-          const alertEl = document.querySelector('.alert');
-          alertEl.setAttribute("role", "alert");
-            $("#expirationWarning").show();
-        }
+        $("#expirationWarning").hide();
 
 
     </script>
