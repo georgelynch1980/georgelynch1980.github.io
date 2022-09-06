@@ -74,7 +74,7 @@
 
 
 
-        <button type="button" class="btn">開啟dialog</button>
+        <button type="button" class="btn">開啟dialog 2222</button>
 
 
 
@@ -83,7 +83,7 @@
             aria-describedby="dialog1Desc" aria-label="xx对话框" tabindex="-1">
             <h1 id="dialog1Title">标题内容</h1>
             <p id="dialog1Desc">您的訊息已經送出。</p>
-            <button class="close_btn">關閉222</button>
+            <button class="close_btn">關閉</button>
         </section>
 
 
@@ -98,7 +98,7 @@
 
         $(".btn").click(function () {
             $("#expirationWarning").show();
-            var div = document.getElementById("expirationWarning");
+            var div = document.getElementById("dialog1Desc");
             div.tabIndex = -1;
             div.focus();
         });
