@@ -7,7 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>個人頁</title>
 
-
+    <style>
+        .hidden {
+          display:none;
+        }
+    </style>
 
 </head>
 
@@ -151,8 +155,8 @@
     </nav>
         
         
-        <button type="button">Trigger alert</button>
-<p class="alert">The alert will trigger when the button is pressed.</p>
+        <button type="button">a Trigger alert</button>
+<p id="expirationWarning" class="alert hidden">The alert will trigger when the button is pressed.</p>
     </main>
 
 
@@ -173,6 +177,7 @@
         function triggerAlert() {
           const alertEl = document.querySelector('.alert');
           alertEl.setAttribute("role", "alert");
+            document.getElementById("expirationWarning").classList.remove('hidden');
         }
 
 
