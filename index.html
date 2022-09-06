@@ -80,7 +80,7 @@
             aria-describedby="dialog1Desc" aria-label="xx对话框" tabindex="-1">
             <h1 id="dialog1Title">标题内容</h1>
             <p id="dialog1Desc">您的訊息已經送出。</p>
-            <button>關閉</button>
+            <button class="close_btn">關閉</button>
         </section>
 
 
@@ -94,13 +94,12 @@
 
 
         $(".btn").click(function () {
-            $("#expirationWarning").attr("role", "alert");
             $("#expirationWarning").show();
-            $("#dialog1Desc").focus();
-            setTimeout(function () {
-                $("#dialog1Desc").focus();
-            }, 500)
+        });
 
+
+        $(".close_btn").click(function () {
+            $("#expirationWarning").hide();
         });
 
         $("#expirationWarning").hide();
