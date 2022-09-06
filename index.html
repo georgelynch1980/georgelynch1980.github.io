@@ -71,7 +71,7 @@
 
 
 
-        <button type="button" class="btn">xx对话框</button>
+        <button type="button" class="btn">開啟dialog</button>
 
 
 
@@ -95,6 +95,9 @@
 
         $(".btn").click(function () {
             $("#expirationWarning").show();
+            var div = document.getElementById("expirationWarning");
+            div.tabIndex = -1;
+            div.focus();
         });
 
 
