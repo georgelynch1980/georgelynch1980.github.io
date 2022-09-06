@@ -149,6 +149,10 @@
         </div>
       </div>
     </nav>
+        
+        
+        <button type="button">Trigger alert</button>
+<p class="alert">The alert will trigger when the button is pressed.</p>
     </main>
 
 
@@ -162,6 +166,14 @@
             document.querySelector(".status").setAttribute("aria-live", "assertive");
 
         });
+        
+        const btn = document.querySelector('button');
+        btn.addEventListener('click', triggerAlert);
+
+        function triggerAlert() {
+          const alertEl = document.querySelector('.alert');
+          alertEl.setAttribute("role", "alert");
+        }
 
 
     </script>
