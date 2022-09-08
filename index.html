@@ -89,10 +89,34 @@
 
 
     </main>
+    
+    
+    <div id="date-input">
+  <label>Year:
+    <input type="text" id="year" value="1990" onblur="change(event)"/>
+  </label>
+</div>
+
+<div id="date-output" aria-atomic="true" aria-live="polite">
+  The set year is:
+  <span id="year-output">1990</span>
+</div>
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
+        
+        function change(event) {
+          const yearOut = document.getElementById("year-output");
+
+          switch (event.target.id) {
+            case "year":
+              yearOut.innerHTML = event.target.value;
+              break;
+            default:
+              return;
+          }
+        };
 
 
         $(".btn").click(function () {
