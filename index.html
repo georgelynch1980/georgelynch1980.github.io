@@ -4,7 +4,8 @@
     <HEAD>
         <TITLE>Live region with aria</TITLE>
         <META NAME="Generator" CONTENT="TextPad 4.6">
-        
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
 
 
     </head>
@@ -54,8 +55,8 @@
 
     <BODY>
 
-        <section id="expirationWarning" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="dialog1Title"
-            aria-describedby="dialog1Desc" tabindex="-1">
+        <section id="expirationWarning" style="display: none;" role="dialog" aria-modal="true"
+            aria-labelledby="dialog1Title" aria-describedby="dialog1Desc" tabindex="-1">
             <h1 id="dialog1Title">標題内容</h1>
             <p id="dialog1Desc" aria-hidden="true" aria-atomic=" true" aria-live="rude" aria-relevant="additions">
                 您的訊息已經送出。</p>
@@ -68,14 +69,15 @@
             integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
 
         <script>
-            $(".close_btn").click(function(){
+            $(".close_btn").click(function () {
                 $("#expirationWarning").hide();
+                $("#dialog1Desc").attr("aria-hidden", "true");
             });
 
             $(".btn").click(function () {
                 $("#expirationWarning").show();
-                var div = document.getElementById("dialog1Desc");
-                $("#dialog1Desc").text("a" + Math.random() * 999999)
+
+                $("#dialog1Desc").text("a" + Math.random() * 999999 + "您的訊息已經送出。")
                 $("#dialog1Desc").attr("aria-hidden", "false")
                 $("#dialog1Desc").attr('tabindex', -1);
                 $("#dialog1Desc").focus();
@@ -86,7 +88,7 @@
 
 
 
-        
+
 
 
     </body>
