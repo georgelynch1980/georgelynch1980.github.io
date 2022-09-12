@@ -113,11 +113,7 @@
 
     <BODY>
 
-        <div class="examplestop">Return to <a
-                href="http://accessibility.athena-ict.com/aria/aria-examples-index.shtml">ARIA Examples Index</a>, or
-            the <a href="http://accessibility.athena-ict.com/aria/ARIA-accessibility-home.shtml">ARIA Accessibility Home
-                Page</a> </div>
-
+      
 
 
         <h1>ARIA live regions example</h1>
@@ -157,115 +153,19 @@
         <div class="rude" aria-hidden="true" id="myRudeAlert" aria-live="assertive" aria-atomic="false"
             aria-relevant="additions">
             relax</div>
-        <div class="notes">
-            <h2>Notes:</h2>
-            <ol>
-                <li>
-                    The clock has aria-live=&quot;off &quot;- We do not want it to bother users just because the clock
-                    changed.</li>
-                <li>The normal alert has aria-live=&quot;polite&quot; - We want to interrupt people at the next
-                    convenient point.</li>
-                <li>The rude alert is set to aria-live=&quot;assertive&quot; - We want to interrupt people right now
-                </li>
-                <li>The rude alerts will bug the user every x seconds...ongoing</li>
-                <li>However every time we bug them we only want to say the new alert text
-                    so...aria-atomic=&quot;false&quot; (only read new content)</li>
-                <li>When we clear the rude alert, we do not want to hear all the alert messages that were deleted so
-                    aria-relevant=&quot;additions &quot;. Note this is the default, so we did not really have to set it,
-                    but it shows the point. </li>
-            </ol>
-
-
-
-        </div>
+       
 
         <div class="mess">
             <h3> Mess around with setting</h3>
             <fieldset>
-                <legend>
-                    Hate your users? If you want to see the affect of different settings on your screen reader try the
-                    following..... (at your own risk)</legend>
+                
                 <button onClick="liveAssertive()">set clock to aria-live as assertive</button>
-                <h2> How we made the live region (tutorial)</h2>
-                <p>To make an aria live region we just needed to set </p>
-                <p dir="ltr">Assistive technologies need to let the user know when content has changed. �� The aria-live
-                    attribute �犲ndicates that an element will be updated, and describes the types of updates.</p>
-                <p dir="ltr">&nbsp;</p>
-                <br />
-                <div dir="ltr">
-                    <table>
-                        <colgroup>
-                        </colgroup>
-                        <tbody>
-                            <tr>
-                                <th>
-                                    <p dir="ltr">Value</p>
-                                </th>
-                                <th>
-                                    <p dir="ltr">Description</p>
-                                </th>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p dir="ltr">off (default):</p>
-                                </td>
-                                <td>
-                                    <p dir="ltr">Updates to the region will not be presented to the user unless the
-                                        assistive technology is currently focused on that region.</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p dir="ltr">polite:</p>
-                                </td>
-                                <td>
-                                    <p dir="ltr">(Background change) Assistive technologies should announce updates at
-                                        the next graceful opportunity, such as at the end of speaking the current
-                                        sentence.</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p dir="ltr">assertive:</p>
-                                </td>
-                                <td>
-                                    <p dir="ltr">This information has the highest priority and assistive technologies
-                                        �坟hould notify the user immediately. Because an interruption may disorient users
-                                        or cause them to not complete their current task, authors �坟hould NOT �抦se the
-                                        assertive value unless the interruption is imperative.</p>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <p>&nbsp;</p>
-                <p>&nbsp;</p>
+                
+                
+                
+                
             </fieldset>
-            <div role="contentinfo">
-                <h1 class="top">Accessibility 2.0 </h1><span class="deque"> Managed by Lisa Seeman </span>
-                <ul class="footer">
-                    <li>
-                        <a href="http://accessibility.athena-ict.com/aria/ARIA-accessibility-home.shtml">ARIA
-                            Accessibility Home</a>
-                    </li>
-                    <li><a href="http://accessibility.athena-ict.com/aria/aria-tests-index.shtml">ARIA mistakes </a>
-                    </li>
-                    <li><a href="http://accessibility.athena-ict.com/aria/aria-accessibility-tutorials.shtml">ARIA
-                            tutorials</a>
-                    </li>
-                    <li><a href="http://accessibility.athena-ict.com/aria/aria-examples-index.shtml">ARIA examples</a>
-                    </li>
-                    <li><a href="http://accessibility.athena-ict.com/aria/references.shtml">References and glossary</a>
-                    </li>
-                    <li><a href="http://accessibility.athena-ict.com/aria/aria-required.shtml">Roles requirements for
-                            authors</a></li>
-                    <li><a href="http://accessibility.athena-ict.com/aria/tests/testing.shtml">Testing guide</a></li>
-                    <li><a href="http://accessibility.athena-ict.com/aria/ARIA-quick-reference.shtml">ARIA quick
-                            reference</a></li>
-                    <li><a href="http://accessibility.athena-ict.com/aria/Javascript-jquery-accessibility.shtml">
-                            Accessibility with JavaScript and jQuery</a></li>
-                </ul>
-            </div>
+           
 
     </body>
 
