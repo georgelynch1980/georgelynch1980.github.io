@@ -41,6 +41,18 @@
                 int = setInterval(function () { runRudeAlert() }, x);
             }
 
+            function alert() {
+                var x = 500;
+                document.getElementById("myRudeAlert2").setAttribute("aria-hidden", "false");
+                document.getElementById("myRudeAlert2").innerHTML = "relax for";
+                document.getElementById("myRudeAlert2").innerHTML += x;
+                document.getElementById("myRudeAlert2").innerHTML += " millisecs. ";
+                document.getElementById("myRudeAlert2").innerHTML += "Get back to work RIGHT NOW. </br>";
+
+
+                
+            }
+
             function runRudeAlert() {
 
                 document.getElementById("myRudeAlert").innerHTML += "Get back to work RIGHT NOW. </br>";
@@ -113,7 +125,7 @@
 
     <BODY>
 
-      
+
 
 
         <h1>ARIA live regions example</h1>
@@ -146,6 +158,11 @@
 
                 <button onClick="setAlert()">set alert</button> <button onClick="setRudeAlert()">set rude alert</button>
                 <button onClick="stopAlert()">stop rude alert</button>
+
+
+
+
+                <button onClick="alert()">alert</button>
         </fieldset>
         </p>
         <div class="alerts" aria-hidden="true" id="myAlert" aria-live="polite">
@@ -153,19 +170,24 @@
         <div class="rude" aria-hidden="true" id="myRudeAlert" aria-live="assertive" aria-atomic="false"
             aria-relevant="additions">
             relax</div>
-       
+
+
+        <div class="rude2" aria-hidden="true" id="myRudeAlert2" aria-live="assertive" aria-atomic="false"
+            aria-relevant="additions">
+            relax</div>
+
 
         <div class="mess">
             <h3> Mess around with setting</h3>
             <fieldset>
-                
+
                 <button onClick="liveAssertive()">set clock to aria-live as assertive</button>
-                
-                
-                
-                
+
+
+
+
             </fieldset>
-           
+
 
     </body>
 
