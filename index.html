@@ -1,272 +1,286 @@
-<! <!DOCTYPE html>
-    <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US" <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>ARIA Dialog Example</title>
+<style>
+    div.main {
+        z-index: -1;
+    }
 
-    <HEAD>
-        <TITLE>Live region with aria</TITLE>
-        <META NAME="Generator" CONTENT="TextPad 4.6">
-        <script>
-            var myVar = setInterval(function () { myTimer() }, 1000);
+    div.whitebox {
+        background-color: white;
+        border: medium;
+        padding: 15px;
+        opacity: 1 !important;
+        text-align: left;
+        width: 30%;
+    }
 
-            function myTimer() {
-                var d = new Date();
-                var t = d.toLocaleTimeString();
-                document.getElementById("clock").innerHTML = t;
+    div.dialogclass {
+        z-index: 0;
+        width: 100%;
+        height: 1000%;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        z-index: 0;
+        background-color: rgba(153, 153, 255, 0.5);
+        text-align: center;
 
+    }
+
+    div.dialogcenter {
+        opacity: 1;
+        text-align: center;
+        background-color: white;
+    }
+
+    div[aria-hidden='true'] {
+        display: none;
+    }
+
+    .hidden {
+        display: none;
+    }
+</style>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+</script>
+<script>
+    // open the dialog 
+    $(document).ready(function () {
+        $("input#login").click(function () {
+            $("div#mydialog").attr("aria-hidden", "false");
+            $("div#mydialog").removeClass("hidden");
+            $("div#main1").attr("tabindex", "-1");
+            $("#dialogheader").focus();
+        });
+        // repeat for the keyboard accessibility for all buttons, enter makes it click...
+        $("input[type='button']").keypress(function (ev) {
+            if (ev.which == 13) {
+                $(this).click();
             }
+        });
 
-            function runAlert() {
-
-                document.getElementById("myAlert").innerHTML = "Get back to work";
+        $("div.whitebox").keydown(function (ev) {
+            if (ev.which == 27) {
+                $("input#cancel").click();
             }
+        });
 
-            function setAlert() {
-                var x = document.getElementById("alertSelect").value;
-                document.getElementById("myAlert").setAttribute("aria-hidden", "false");
-                document.getElementById("myAlert").innerHTML = "relax for";
-                document.getElementById("myAlert").innerHTML += x;
-                document.getElementById("myAlert").innerHTML += " millisecs. ";
+        // close the dialog and put the focus back to were it was 
+        $("input#cancel").click(function () {
+            $("div#mydialog").attr("aria-hidden", "true");
+            $("div#mydialog").addClass("hidden");
+            $("div#main1").attr("tabindex", "0");
+            $("input#login").focus();
+            ev.preventDefault();
+        });
+
+        // repeat for the ok button
+        $("input#ok").click(function () {
+            $("input#cancel").click();
+        });
 
 
-                var int = self.setTimeout(function () { runAlert() }, x);
+        // repeat for the esc key
+
+
+
+        // trap the focus - basicly if you are on the first item in the dialog and press shift alt go to the last element in the dialog
+
+        $("#dialogheader").keydown(function (ev) {
+            if (ev.shiftKey && ev.which == 9) {
+                $("#ok").focus();
+                ev.preventDefault();
             }
-
-            function setRudeAlert() {
-                var x = document.getElementById("alertSelect").value;
-                document.getElementById("myRudeAlert").setAttribute("aria-hidden", "false");
-                document.getElementById("myRudeAlert").innerHTML = "relax for";
-                document.getElementById("myRudeAlert").innerHTML += x;
-                document.getElementById("myRudeAlert").innerHTML += " millisecs. ";
+        });
+    });
 
 
-                int = setInterval(function () { runRudeAlert() }, x);
-            }
-
-            function runRudeAlert() {
-
-                document.getElementById("myRudeAlert").innerHTML += "Get back to work RIGHT NOW. </br>";
-            }
-
-            function stopAlert() {
-
-                document.getElementById("myRudeAlert").innerHTML = "Ok. I will stop bugging you now. </br>";
-                clearTimeout(int);
-            }
-
-            function atomicTrue() {
-                document.getElementById("myRudeAlert").setAttribute("aria-atomic", "true");
-            }
-            function relevantAll() {
-                document.getElementById("myRudeAlert").setAttribute("aria-relevant", "all");
-            }
-            function liveAssertive() {
-                document.getElementById("clock").setAttribute("aria-live", "assertive");
-            }
-        </script>
+</script>
 
 
 
+<link rel="stylesheet" type="text/css" href="http://accessibility.athena-ict.com/accessibility.css" />
+</head>
 
-    </head>
-    </script>
-    <style type="text/css">
-        div.alerts {
-            border: groove;
-
-            width: 15%;
-            height: width:30%;
-            position: absolute;
-            top: 10px;
-            right: 30%;
-
-        }
-
-        .rude {
-            color: red;
-            border: groove;
-            width: 15%;
-            height: width:30%;
-            position: absolute;
-            top: 10px;
-            right: 10px;
-        }
-
-        .notes {
-            border: dashed #009
-        }
-
-        button {
-            padding: 1px;
-            margin: 5px;
-            white-space: nowrap;
-        }
-
-        div[aria-hidden="true"] {
-            display: none;
-        }
-
-        div[aria-hidden="false"] {
-            display: block;
-        }
-    </style>
-    <link rel="stylesheet" type="text/css" href="http://accessibility.athena-ict.com/accessibility.css" />
-    </HEAD>
-
-    <BODY>
-
+<body>
+    <div class="main" id="main1" aria-labelledby="h11">
         <div class="examplestop">Return to <a
                 href="http://accessibility.athena-ict.com/aria/aria-examples-index.shtml">ARIA Examples Index</a>, or
             the <a href="http://accessibility.athena-ict.com/aria/ARIA-accessibility-home.shtml">ARIA Accessibility Home
                 Page</a> </div>
 
+        <h1 id="h11">ARIA Dialog Example (Modal)</h1>
 
-
-        <h1>ARIA live regions example</h1>
-        <div>
-            <p>Author Lisa Seeman </p>
-        </div>
-        <p>The content below uses aria-live, aria-atomic and aria-relevant
-            <script>
-                var myVar = setInterval(function () { myTimer() }, 1000);
-            </script>.
+        <p>
+            <input type="button" value="press to open dialog" id="login" />
         </p>
-        <p>The time is now:</p>
-        <p id="clock" aria-live="off"></p>
-        <fieldset aria-controls="alerts">
-            <legend>Taking a brake...</legend>
-            <p>
-                <label id="setAlertLabel" for="alertSelect">Alert me in:</label>
-                <select id="alertSelect" role="listbox">
-                    <option id="interval1" value="10000">10 seconds
-                    </option>
-                    <option id="interval1" value="60000">1 minute
-                    </option>
-                    <option id="interval2" value="300000" selected>5 minutes
-                    </option>
-                    <option id="interval3" value="600000">10 minutes
-                    </option>
-                </select>
-            </p>
-            <p>
-
-                <button onClick="setAlert()">set alert</button> <button onClick="setRudeAlert()">set rude alert</button>
-                <button onClick="stopAlert()">stop rude alert</button>
-        </fieldset>
+        <p>The dialog follows the best practice design patterns from <a
+                href="http://www.w3.org/TR/wai-aria-practices/#modal_dialog">Making a Dialog Modal.</a> For example, The
+            user can not tab out of the dialog. To close or leave the dialog, they need to press either the OK or the
+            cancel button. </p>
+        <h2>Step by Step: How we made the dialog (tutorial)</h2>
+        <p>In <a href="http://www.deque.com/learn-aria-step-1-understanding-roles-states-relationships-focus">the
+                discussion on ARIA</a>, we discussed 5 steps to making complex things accessible with ARIA. <br />
+            Let's take a quick look at them again.</p>
+        <ol>
+            <li> Alert users to what each elements is: Their role (such as checkbox).</li>
+            <li> Alert users to their properties and important relationships (such as disabled, required,and other
+                labels).</li>
+            <li> Alert users to what each element is doing: The state (such as checked).</li>
+            <li> Alert users to changes in their state.</li>
+            <li> Make sure widgets are keyboard accessible and focus works predictably. Events can be triggered though
+                the keyboard, and it should be intuitive to the user. All controls should receive focus via tabbing
+                though the keyboard.</li>
+        </ol>
+        <h3>Step 1: Set roles. </h3>
+        <p>Our buttons are HTML standard form controls so we do not need form control roles as well. The Div that
+            contained the dialog content however needs a role dialog as the tag &quot;Div&quot; does not describe how it
+            behaves.</p>
+        <h3>Step 2: Set properties and important relationships</h3>
+        <p>We want to make sure the structure, relationships between elements and groups, properties and labels are all
+            clear in the code. They can be clear from the standard HTML code, or using ARIA.</p>
+        <p> Firstly note the<strong> structure. </strong>The dialog contents are all rapped inside the dialog role so
+            that they belong together is implied in the code or DOM. So the the groups are clear. </p>
+        <p>What about<strong> properties an</strong><strong>d labels</strong>?</p>
+        <p>The role dialog really describes the behavior quite well so there is little to add. The only property we need
+            to set is to set the dialog header as it's label using aria-labelledby. </p>
+        <p><code>&lt;div id=&quot;mydialog&quot; aria-hidden=&quot;true&quot; role=&quot;dialog&quot; class=&quot;dialogclass&quot; aria-labelledby=&quot;dialogheader&quot;&gt;<br />
+  &lt;div class=&quot;whitebox&quot;&gt;<br />
+  &lt;h1 id=&quot;dialogheader&quot; tabindex=&quot;0&quot; &gt;login&lt;/h1&gt;</code></p>
+        <p>Note that it is always worth looking at any <a
+                href="http://accessibility.athena-ict.com/aria/aria-required.shtml">requirments</a> such as required
+            states, and <a href="http://accessibility.athena-ict.com/aria/ARIA-quick-reference.shtml"> supported
+                states</a> for your roles before deciding what properties and states you need. </p>
+        <h3>Step 3: Set the initial states</h3>
+        <p>A good rule of thumb is elements that change how they look often have states that can change. The dialog
+            changes in that it goes from being visible to invisible. So we are going to use aria-hidden=&quot;true&quot;
+            on the dialog initially and change it's value when it is shown.</p>
+        <p>We also use CSS selectors, to show and hide the dialog based on the aria-hidden value. Now I do not need to
+            change their CSS class in the code, only the value of aria-hidden.</p>
+        <p><code>div[aria-hidden='true'] {<br />
+display: none;<br />
+}</code></p>
+        <p><strong>A word about backward compatibility....</strong></p>
+        <p>Unfortunately IE 9 does not support the CSS selectors above. (IE 10 does support them.) So to make this work
+            with older browser I added a class hidden:</p>
+        <p><code>.hidden {display:none;}</code></p>
+        <p>I then added &quot;hidden&quot; to the class attribute in the HTML to hide the hidden items in older
+            browsers.</p>
+        <p><code>class = &quot;... hidden&quot;</code></p>
+        <p>&nbsp;</p>
+        <h4>Step 4: Set changes in state.</h4>
+        <p>We discussed above that the dialog uses the aria state of aria-hidden, and we are using CSS selectors so that
+            whenever <code>aria-hidden='true'</code> the dialog will be hidden and when <code>aria-hidden='false'</code>
+            the dialog will be visible. </p>
+        <p>In the code we have a function to open the dialog by changing the values of aria-hidden. </p>
+        <p><code>$(&quot;div#mydialog&quot;).attr(&quot;aria-hidden&quot;,&quot;false&quot;);</code></p>
+        <p><strong>For older browsers,</strong> whenever I set <code>aria-hidden = &quot;true&quot;</code> in the
+            script, I also added the class hidden to the same selector:</p>
+        <p><code>$(&quot;....&quot;).addClass(&quot;hidden&quot;);</code></p>
+        <p>I also removed it when I set <code>aria-hidden = &quot;false&quot;</code>:</p>
+        <p><code>$(&quot;...&quot;).removeClass(&quot;hidden&quot;);</code><br />
         </p>
-        <div class="alerts" aria-hidden="true" id="myAlert" aria-live="polite">
-            relax</div>
-        <div class="rude" aria-hidden="true" id="myRudeAlert" aria-live="assertive" aria-atomic="false"
-            aria-relevant="additions">
-            relax</div>
-        <div class="notes">
-            <h2>Notes:</h2>
-            <ol>
+        <p>This makes the script much more robust in older browsers.</p>
+        <h4>Step 4: Manage focus and keyboard accessibility.</h4>
+        <p>Both the focus and keyboard accessibility needs to be managed. We also need to make the dialog <em>modal
+            </em>- so that users stay in the dialog until they actively close it.</p>
+        <p>Firstly lets deal with the keyboard accessibility and make sure our jQuery selectors are device independent.
+            In the code we have used mouse events such as &quot;click()&quot; to trigger the button function such as :
+            <code>&quot;$(&quot;input#login&quot;).click(function()&quot;</code> </p>
+        <p>We need to add device independent events as well for people who can not use a mouse. </p>
+        <p>The following function gives keyboard accessibility for all the buttons, so that pressing enter when a button
+            has focus (key-code 13) is the same as clicking the button with a mouse. <br />
+            <code>$(&quot;input[type='button']&quot;).keydown(function(ev) {<br />
+if (ev.which ==13)  {<br />
+$(this).click()<br />
+}<br />
+});</code>
+        </p>
+        <p>Next we need to think about focus. For this design pattern a few things have to happen. Firstly the dialog
+            should get focus when it is opened. Also, as the dialog is modal we want the rest of the page content
+            (inside div main1) to be removed from the tabbing order. We do that by setting the tabindex of the main
+            content to -1. Altogether the code to open the dialog looks like this: </p>
+        <p> <code>$(&quot;input#login&quot;).click(function(){<br />
+$(&quot;div#mydialog&quot;).attr(&quot;aria-hidden&quot;,&quot;false&quot;);<br />
+$(&quot;div#main1&quot;).attr(&quot;tabindex&quot;,&quot;-1&quot;);<br />
+$(&quot;#dialogheader&quot;).focus();<br />
+});</code></p>
+        <p>We also want to trap the focus so that when the dialog is open the user will not be able to just tab out of
+            the dialog into the main content. They need to close the dialog in order to leave it. For example, when the
+            user is on the the first item in the dialog, pressing shift-alt will take them to the last element in the
+            dialog. <br />
+            <br />
+            <code>$(&quot;#dialogheader&quot;).keydown(function(ev){<br />
+if (ev.shiftKey &amp;&amp; ev.which == 9)  {<br />
+$(&quot;#ok&quot;).focus();<br />
+ev.preventDefault(); <br />
+}<br />
+});</code><br />
+        </p>
+        <p>Another aspect of this design pattern is that the user can also close the dialog by pressing the esc
+            key.<br />
+        </p>
+        <p> <code>  if (ev.which == 27)  {<br />
+  $(&quot;input#cancel&quot;).click();}<br />
+</code></p>
+        <p>Finally we need to manage the focus when the user closes the dialog. This involves, hiding the dialog,
+            removing it from the tabbing order (tabindex = -1) putting the main content back in the tabbing order
+            (tabindex = 0) and returning the focus to where it was before we opened the dialog.</p>
+        <p> <code>$(&quot;input#cancel&quot;).click(function(){<br />
+$(&quot;div#mydialog&quot;).attr(&quot;aria-hidden&quot;,&quot;true&quot;);<br />
+$(&quot;div#main1&quot;).attr(&quot;tabindex&quot;,&quot;0&quot;);<br />
+$(&quot;input#login&quot;).focus() ;<br />
+ev.preventDefault();<br />
+ }); </code></p>
+
+        <div role="contentinfo">
+            <h1 class="top">Accessibility 2.0 </h1><span class="deque"> Managed by Lisa Seeman </span>
+            <ul class="footer">
                 <li>
-                    The clock has aria-live=&quot;off &quot;- We do not want it to bother users just because the clock
-                    changed.</li>
-                <li>The normal alert has aria-live=&quot;polite&quot; - We want to interrupt people at the next
-                    convenient point.</li>
-                <li>The rude alert is set to aria-live=&quot;assertive&quot; - We want to interrupt people right now
+                    <a href="http://accessibility.athena-ict.com/aria/ARIA-accessibility-home.shtml">ARIA Accessibility
+                        Home</a>
                 </li>
-                <li>The rude alerts will bug the user every x seconds...ongoing</li>
-                <li>However every time we bug them we only want to say the new alert text
-                    so...aria-atomic=&quot;false&quot; (only read new content)</li>
-                <li>When we clear the rude alert, we do not want to hear all the alert messages that were deleted so
-                    aria-relevant=&quot;additions &quot;. Note this is the default, so we did not really have to set it,
-                    but it shows the point. </li>
-            </ol>
-
-
-
+                <li><a href="http://accessibility.athena-ict.com/aria/aria-tests-index.shtml">ARIA mistakes </a>
+                </li>
+                <li><a href="http://accessibility.athena-ict.com/aria/aria-accessibility-tutorials.shtml">ARIA
+                        tutorials</a>
+                </li>
+                <li><a href="http://accessibility.athena-ict.com/aria/aria-examples-index.shtml">ARIA examples</a>
+                </li>
+                <li><a href="http://accessibility.athena-ict.com/aria/references.shtml">References and glossary</a>
+                </li>
+                <li><a href="http://accessibility.athena-ict.com/aria/aria-required.shtml">Roles requirements for
+                        authors</a></li>
+                <li><a href="http://accessibility.athena-ict.com/aria/tests/testing.shtml">Testing guide</a></li>
+                <li><a href="http://accessibility.athena-ict.com/aria/ARIA-quick-reference.shtml">ARIA quick
+                        reference</a></li>
+                <li><a href="http://accessibility.athena-ict.com/aria/Javascript-jquery-accessibility.shtml">
+                        Accessibility with JavaScript and jQuery</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="mydialog" aria-hidden="true" role="dialog" class="dialogclass hidden" aria-labelledby="dialogheader">
+        <div class="whitebox">
+            <h1 id="dialogheader" tabindex="0">login</h1>
+            <p>
+                Note that this form does nothing, it is just to show aria dialog at work. <br />
+                There are no required elements.</p>
+            <fieldset>
+                <label>name: &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <input type="text" name="name" id="name" /></label><br />
+                <label>password: <input type="text" name="password" /></label><br />
+            </fieldset>
+            <input type="button" value="Cancel" name="cancel" id="cancel" />
+            <input type="button" value="OK" name="ok" id="ok" aria-flowto="dialogheader" />
         </div>
 
-        <div class="mess">
-            <h3> Mess around with setting</h3>
-            <fieldset>
-                <legend>
-                    Hate your users? If you want to see the affect of different settings on your screen reader try the
-                    following..... (at your own risk)</legend>
-                <button onClick="liveAssertive()">set clock to aria-live as assertive</button>
-                <h2> How we made the live region (tutorial)</h2>
-                <p>To make an aria live region we just needed to set </p>
-                <p dir="ltr">Assistive technologies need to let the user know when content has changed. �� The aria-live
-                    attribute �犲ndicates that an element will be updated, and describes the types of updates.</p>
-                <p dir="ltr">&nbsp;</p>
-                <br />
-                <div dir="ltr">
-                    <table>
-                        <colgroup>
-                        </colgroup>
-                        <tbody>
-                            <tr>
-                                <th>
-                                    <p dir="ltr">Value</p>
-                                </th>
-                                <th>
-                                    <p dir="ltr">Description</p>
-                                </th>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p dir="ltr">off (default):</p>
-                                </td>
-                                <td>
-                                    <p dir="ltr">Updates to the region will not be presented to the user unless the
-                                        assistive technology is currently focused on that region.</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p dir="ltr">polite:</p>
-                                </td>
-                                <td>
-                                    <p dir="ltr">(Background change) Assistive technologies should announce updates at
-                                        the next graceful opportunity, such as at the end of speaking the current
-                                        sentence.</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p dir="ltr">assertive:</p>
-                                </td>
-                                <td>
-                                    <p dir="ltr">This information has the highest priority and assistive technologies
-                                        �坟hould notify the user immediately. Because an interruption may disorient users
-                                        or cause them to not complete their current task, authors �坟hould NOT �抦se the
-                                        assertive value unless the interruption is imperative.</p>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <p>&nbsp;</p>
-                <p>&nbsp;</p>
-            </fieldset>
-            <div role="contentinfo">
-                <h1 class="top">Accessibility 2.0 </h1><span class="deque"> Managed by Lisa Seeman </span>
-                <ul class="footer">
-                    <li>
-                        <a href="http://accessibility.athena-ict.com/aria/ARIA-accessibility-home.shtml">ARIA
-                            Accessibility Home</a>
-                    </li>
-                    <li><a href="http://accessibility.athena-ict.com/aria/aria-tests-index.shtml">ARIA mistakes </a>
-                    </li>
-                    <li><a href="http://accessibility.athena-ict.com/aria/aria-accessibility-tutorials.shtml">ARIA
-                            tutorials</a>
-                    </li>
-                    <li><a href="http://accessibility.athena-ict.com/aria/aria-examples-index.shtml">ARIA examples</a>
-                    </li>
-                    <li><a href="http://accessibility.athena-ict.com/aria/references.shtml">References and glossary</a>
-                    </li>
-                    <li><a href="http://accessibility.athena-ict.com/aria/aria-required.shtml">Roles requirements for
-                            authors</a></li>
-                    <li><a href="http://accessibility.athena-ict.com/aria/tests/testing.shtml">Testing guide</a></li>
-                    <li><a href="http://accessibility.athena-ict.com/aria/ARIA-quick-reference.shtml">ARIA quick
-                            reference</a></li>
-                    <li><a href="http://accessibility.athena-ict.com/aria/Javascript-jquery-accessibility.shtml">
-                            Accessibility with JavaScript and jQuery</a></li>
-                </ul>
-            </div>
+    </div>
 
-    </body>
 
-    </html>
+</body>
+
+</html>
