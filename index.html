@@ -104,7 +104,7 @@
     
     
     <button type="button">Trigger alert</button>
-<p class="alert">The alert will trigger when the button is pressed.</p>
+<p class="alert" aria-hidden="true" aria-live="assertive" aria-atomic="false">The alert will trigger when the button is pressed.</p>
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -115,7 +115,8 @@
 
         function triggerAlert() {
           const alertEl = document.querySelector('.alert');
-          alertEl.setAttribute("role", "alert");
+            alertEl.setAttribute("aria-hidden","false");
+         
         }
         
         function change(event) {
