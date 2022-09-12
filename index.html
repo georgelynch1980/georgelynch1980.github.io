@@ -21,143 +21,143 @@
             margin: -1px;
 
         }
-        #expirationWarning{
+
+        #expirationWarning {
             display: none;
         }
     </style>
-    
+
     <style type="text/css">
-div.alerts{border:groove;
+        div.alerts {
+            border: groove;
 
-width:15%;
-height:width:30%;
-position:absolute;
-top:10px;
-right:30%;
+            width: 15%;
+            height: width:30%;
+            position: absolute;
+            top: 10px;
+            right: 30%;
 
-}
+        }
 
-.rude{color:red; 
-border:groove;
-width:15%;
-height:width:30%;
-position:absolute;
-top:10px;
-right:10px;
-}
-.notes{border:dashed #009}
-button{padding:1px; margin:5px;
-white-space:nowrap;
-}
+        .rude {
+            color: red;
+            border: groove;
+            width: 15%;
+            height: width:30%;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
 
-div[aria-hidden="true"] {display:none;}
-div[aria-hidden="false"] {display:block;}
-  </style>
+        .notes {
+            border: dashed #009
+        }
+
+        button {
+            padding: 1px;
+            margin: 5px;
+            white-space: nowrap;
+        }
+
+        div[aria-hidden="true"] {
+            display: none;
+        }
+
+        div[aria-hidden="false"] {
+            display: block;
+        }
+    </style>
 
 </head>
 
 <body>
-   
-        
-    
-    <label id="setAlertLabel" for="alertSelect">Alert me in:</label>
-<select id="alertSelect" role="listbox" >
-  <option
-    id="interval1"
-    value="10000">10 seconds
-  </option> 
- <option
-    id="interval1"
-    value="60000">1 minute
-  </option>
-  <option
-    id="interval2"
-    value="300000" selected>5 minutes
-  </option>
-  <option
-    id="interval3"
-    value="600000">10 minutes
-  </option>
-</select> 
-</p><p>
 
-<button onClick="setAlert()">set alert</button> <button onClick="setRudeAlert()" >set rude alert</button>
- <button onClick="stopAlert()" >stop rude alert</button>
-</fieldset></p>
-<div class="alerts" aria-hidden="true" id="myAlert" aria-live="polite"> 
-relax</div>
-<div class="rude" aria-hidden="true" id="myRudeAlert" aria-live="assertive" aria-atomic="false" aria-relevant="additions" > 
-relax</div>
-    
+
+
+    <label id="setAlertLabel" for="alertSelect">Alert me in:</label>
+    <select id="alertSelect" role="listbox">
+        <option id="interval1" value="10000">10 seconds
+        </option>
+        <option id="interval1" value="60000">1 minute
+        </option>
+        <option id="interval2" value="300000" selected>5 minutes
+        </option>
+        <option id="interval3" value="600000">10 minutes
+        </option>
+    </select>
+    </p>
+    <p>
+
+        <button onClick="setAlert()">set alert</button> <button onClick="setRudeAlert()">set rude alert</button>
+        <button onClick="stopAlert()">stop rude alert</button>
+        </fieldset>
+    </p>
+    <div class="alerts" aria-hidden="true" id="myAlert" aria-live="polite">
+        relax</div>
+    <div class="rude" aria-hidden="true" id="myRudeAlert" aria-live="assertive" aria-atomic="false"
+        aria-relevant="additions">
+        relax</div>
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
-var myVar=setInterval(function(){myTimer()},1000);
+        var myVar = setInterval(function () { myTimer() }, 1000);
 
-function myTimer()
-{
-var d=new Date();
-var t=d.toLocaleTimeString();
-document.getElementById("clock").innerHTML=t;
+        function myTimer() {
+            var d = new Date();
+            var t = d.toLocaleTimeString();
+            document.getElementById("clock").innerHTML = t;
 
-}
+        }
 
-function runAlert()
-  {
-  
-  document.getElementById("myAlert").innerHTML="Get back to work";
-  }
+        function runAlert() {
 
-function setAlert()
-{
-var x = document.getElementById("alertSelect").value;
-document.getElementById("myAlert").setAttribute("aria-hidden","false");
-document.getElementById("myAlert").innerHTML="relax for";
-document.getElementById("myAlert").innerHTML+=x;
-document.getElementById("myAlert").innerHTML+=" millisecs. ";
+            document.getElementById("myAlert").innerHTML = "Get back to work";
+        }
+
+        function setAlert() {
+            var x = document.getElementById("alertSelect").value;
+            document.getElementById("myAlert").setAttribute("aria-hidden", "false");
+            document.getElementById("myAlert").innerHTML = "relax for";
+            document.getElementById("myAlert").innerHTML += x;
+            document.getElementById("myAlert").innerHTML += " millisecs. ";
 
 
-var int=self.setTimeout(function(){runAlert()},x);
-}
+            var int = self.setTimeout(function () { runAlert() }, x);
+        }
 
-function setRudeAlert()
-{
-var x = document.getElementById("alertSelect").value;
-document.getElementById("myRudeAlert").setAttribute("aria-hidden","false");
-document.getElementById("myRudeAlert").innerHTML="relax for";
-document.getElementById("myRudeAlert").innerHTML+=x;
-document.getElementById("myRudeAlert").innerHTML+=" millisecs. ";
+        function setRudeAlert() {
+            var x = document.getElementById("alertSelect").value;
+            document.getElementById("myRudeAlert").setAttribute("aria-hidden", "false");
+            document.getElementById("myRudeAlert").innerHTML = "relax for";
+            document.getElementById("myRudeAlert").innerHTML += x;
+            document.getElementById("myRudeAlert").innerHTML += " millisecs. ";
 
 
-int=setInterval(function(){runRudeAlert()},x);
-}
+            int = setInterval(function () { runRudeAlert() }, x);
+        }
 
-function runRudeAlert()
-  {
-  
-  document.getElementById("myRudeAlert").innerHTML+="Get back to work RIGHT NOW. </br>";
-  }
-  
-function stopAlert()
-{
+        function runRudeAlert() {
 
-document.getElementById("myRudeAlert").innerHTML="Ok. I will stop bugging you now. </br>";
-clearTimeout(int);
-}
+            document.getElementById("myRudeAlert").innerHTML += "Get back to work RIGHT NOW. </br>";
+        }
 
-function atomicTrue()
-{
-document.getElementById("myRudeAlert").setAttribute("aria-atomic","true");
-}
-function relevantAll()
-{
-document.getElementById("myRudeAlert").setAttribute("aria-relevant","all");
-}
-function liveAssertive()
-{
-document.getElementById("clock").setAttribute("aria-live","assertive");
-}
-</script>
+        function stopAlert() {
+
+            document.getElementById("myRudeAlert").innerHTML = "Ok. I will stop bugging you now. </br>";
+            clearTimeout(int);
+        }
+
+        function atomicTrue() {
+            document.getElementById("myRudeAlert").setAttribute("aria-atomic", "true");
+        }
+        function relevantAll() {
+            document.getElementById("myRudeAlert").setAttribute("aria-relevant", "all");
+        }
+        function liveAssertive() {
+            document.getElementById("clock").setAttribute("aria-live", "assertive");
+        }
+    </script>
 
 
 </body>
