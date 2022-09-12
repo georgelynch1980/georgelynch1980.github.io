@@ -30,80 +30,10 @@
 
 <body>
     <main role="main">
-        <div tabindex="0" aria-rowindex="1" aria-label="歡迎來到個人頁"><img style="width: 50px;height: auto;"
-                src=" https://cdn-icons-png.flaticon.com/512/556/556813.png" alt=""></div>
-        <br>
-
-
-
-        <div class="aria-hidden">我的保單數999張</div>
-
-        <div aria-hidden="true">999</div>
-
-           
-
-        <br>
-        <a aria-label="查閱我的保單" aria-rowindex="2">
-            <img width="15px;" src="https://cdn-icons-png.flaticon.com/512/271/271220.png" alt="">
-            查閱我的保單
-        </a>
-        <a tabindex="1" aria-label="查閱我的保單">
-            <img width="15px;" src="https://cdn-icons-png.flaticon.com/512/271/271220.png" alt="">
-            查閱我的保單1
-        </a>
-        <a tabindex="2" aria-label="查閱我的保單" aria-rowindex="3">
-            <img width="15px;" src="https://cdn-icons-png.flaticon.com/512/271/271220.png" alt="">
-            查閱我的保單2
-        </a>
-
-        <a tabindex="3" aria-label="查閱我的保單" aria-rowindex="4">
-            <img width="15px;" src="https://cdn-icons-png.flaticon.com/512/271/271220.png" alt="">
-            查閱我的保單3
-        </a>
-
-        <span aria-hidden="true">955</span>
-        <div aria-hidden="true"><img style="width: 50px;height: auto;"
-                src=" https://cdn-icons-png.flaticon.com/512/556/556813.png" alt=""></div>
-
-
-
-
-
-
-
-
-
-
-        <button type="button" class="btn">開啟dialog 7</button>
-
-
-
-
-        <section id="expirationWarning" role="dialog" aria-modal="true" tabindex="-1">
-            <h1 id="dialog1Title">標題内容</h1>
-            <p id="dialog1Desc" role="alert"  aria-atomic="true">您的訊息已經送出。</p>
-            <button class="close_btn">關閉</button>
-        </section>
-
-        <a href="https://iserve-dev.chinalife.com.tw/my/changePolicy/householdRegistrationSwitch/" target="_blank">開</a>
-
-
-    </main>
+        
     
     
-    <div id="date-input">
-  <label>Year:
-    <input type="text" id="year" value="1990" onblur="change(event)"/>
-  </label>
-</div>
-
-<div id="date-output" aria-atomic="true" aria-live="polite">
-  The set year is:
-  <span id="year-output">1990</span>
-</div>
-    
-    
-    <button type="button">Trigger alert</button>
+    <button type="button" onClick="triggerAlert()">Trigger alert</button>
 
 
     <div class="class" aria-hidden="true" id="myRudeAlert" aria-live="assertive" aria-atomic="false" aria-relevant="additions" > aaaaaaaaaaaaa</div>
@@ -111,8 +41,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
         
-        const btn = document.querySelector('button');
-        btn.addEventListener('click', triggerAlert);
+       
 
         function triggerAlert() {
           const alertEl = document.querySelector('.alert');
@@ -120,39 +49,7 @@
          
         }
         
-        function change(event) {
-          const yearOut = document.getElementById("year-output");
-
-          switch (event.target.id) {
-            case "year":
-              yearOut.innerHTML = event.target.value;
-              break;
-            default:
-              return;
-          }
-        };
-
-
-        $(".btn").click(function () {
-            $("#expirationWarning").show();
-            var div = document.getElementById("expirationWarning");
-            div.tabIndex = -1;
-            div.focus();
-        });
-
-
-        $(".close_btn").click(function () {
-            $("#expirationWarning").hide();
-        });
-
-        $("#expirationWarning").hide();
-
-        setTimeout(function(){
-            $("#expirationWarning").show();
-            var div = document.getElementById("expirationWarning");
-            div.tabIndex = -1;
-            div.focus();
-        },5000)
+        
 
 
     </script>
