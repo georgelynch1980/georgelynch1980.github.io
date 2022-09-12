@@ -1,147 +1,166 @@
-<!DOCTYPE html>
-<html lang="en">
+<! <!DOCTYPE html>
+    <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>ARIA Dialog Example</title>
-    <style>
-        div.main {
-            z-index: -1;
-        }
+    <HEAD>
+        <TITLE>Live region with aria</TITLE>
+        <META NAME="Generator" CONTENT="TextPad 4.6">
+        <script>
+            var myVar = setInterval(function () { myTimer() }, 1000);
 
-        div.whitebox {
-            background-color: white;
-            border: medium;
-            padding: 15px;
-            opacity: 1 !important;
-            text-align: left;
-            width: 30%;
-        }
+            function myTimer() {
+                var d = new Date();
+                var t = d.toLocaleTimeString();
+                document.getElementById("clock").innerHTML = t;
 
-        div.dialogclass {
-            z-index: 0;
-            width: 100%;
-            height: 1000%;
+            }
+
+            function runAlert() {
+
+                document.getElementById("myAlert").innerHTML = "Get back to work";
+            }
+
+            function setAlert() {
+                var x = document.getElementById("alertSelect").value;
+                document.getElementById("myAlert").setAttribute("aria-hidden", "false");
+                document.getElementById("myAlert").innerHTML = "relax for";
+                document.getElementById("myAlert").innerHTML += x;
+                document.getElementById("myAlert").innerHTML += " millisecs. ";
+
+
+                var int = self.setTimeout(function () { runAlert() }, x);
+            }
+
+            function setRudeAlert() {
+                var x = document.getElementById("alertSelect").value;
+                document.getElementById("myRudeAlert").setAttribute("aria-hidden", "false");
+                document.getElementById("myRudeAlert").innerHTML = "relax for";
+                document.getElementById("myRudeAlert").innerHTML += x;
+                document.getElementById("myRudeAlert").innerHTML += " millisecs. ";
+
+
+                int = setInterval(function () { runRudeAlert() }, x);
+            }
+
+            function runRudeAlert() {
+
+                document.getElementById("myRudeAlert").innerHTML += "Get back to work RIGHT NOW. </br>";
+            }
+
+            function stopAlert() {
+
+                document.getElementById("myRudeAlert").innerHTML = "Ok. I will stop bugging you now. </br>";
+                clearTimeout(int);
+            }
+
+            function atomicTrue() {
+                document.getElementById("myRudeAlert").setAttribute("aria-atomic", "true");
+            }
+            function relevantAll() {
+                document.getElementById("myRudeAlert").setAttribute("aria-relevant", "all");
+            }
+            function liveAssertive() {
+                document.getElementById("clock").setAttribute("aria-live", "assertive");
+            }
+        </script>
+
+
+
+
+    </head>
+    </script>
+    <style type="text/css">
+        div.alerts {
+            border: groove;
+
+            width: 15%;
+            height: width:30%;
             position: absolute;
-            left: 0px;
-            top: 0px;
-            z-index: 0;
-            background-color: rgba(153, 153, 255, 0.5);
-            text-align: center;
+            top: 10px;
+            right: 30%;
 
         }
 
-        div.dialogcenter {
-            opacity: 1;
-            text-align: center;
-            background-color: white;
+        .rude {
+            color: red;
+            border: groove;
+            width: 15%;
+            height: width:30%;
+            position: absolute;
+            top: 10px;
+            right: 10px;
         }
 
-        div[aria-hidden='true'] {
+        .notes {
+            border: dashed #009
+        }
+
+        button {
+            padding: 1px;
+            margin: 5px;
+            white-space: nowrap;
+        }
+
+        div[aria-hidden="true"] {
             display: none;
         }
 
-        .hidden {
-            display: none;
+        div[aria-hidden="false"] {
+            display: block;
         }
     </style>
-
-
-
-
-
-
     <link rel="stylesheet" type="text/css" href="http://accessibility.athena-ict.com/accessibility.css" />
-</head>
+    </HEAD>
 
-<body>
-    <div class="main" id="main1" aria-labelledby="h11">
+    <BODY>
 
-
-        <h1 id="h11">ARIA Dialog Example (Modal)</h1>
-
-        <p>
-            <input type="button" value="press to open dialog" id="login" />
-        </p>
+        <div class="examplestop">Return to <a
+                href="http://accessibility.athena-ict.com/aria/aria-examples-index.shtml">ARIA Examples Index</a>, or
+            the <a href="http://accessibility.athena-ict.com/aria/ARIA-accessibility-home.shtml">ARIA Accessibility Home
+                Page</a> </div>
 
 
 
-    </div>
-
-    <div id="mydialog" aria-hidden="true" role="dialog" class="dialogclass hidden" aria-labelledby="dialogheader">
-        <div class="whitebox">
-            <h1 id="dialogheader" tabindex="0">login</h1>
-            <p>
-                Note that this form does nothing, it is just to show aria dialog at work. <br />
-                There are no required elements.</p>
-            <fieldset>
-                <label>name: &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <input type="text" name="name" id="name" /></label><br />
-                <label>password: <input type="text" name="password" /></label><br />
-            </fieldset>
-            <input type="button" value="Cancel" name="cancel" id="cancel" />
-            <input type="button" value="OK" name="ok" id="ok" aria-flowto="dialogheader" />
+        <h1>ARIA live regions example</h1>
+        <div>
+            <p>Author Lisa Seeman </p>
         </div>
+        <p>The content below uses aria-live, aria-atomic and aria-relevant
+            <script>
+                var myVar = setInterval(function () { myTimer() }, 1000);
+            </script>.
+        </p>
+        <p>The time is now:</p>
+        <p id="clock" aria-live="off"></p>
+        <fieldset aria-controls="alerts">
+            <legend>Taking a brake...</legend>
+            <p>
+                <label id="setAlertLabel" for="alertSelect">Alert me in:</label>
+                <select id="alertSelect" role="listbox">
+                    <option id="interval1" value="10000">10 seconds
+                    </option>
+                    <option id="interval1" value="60000">1 minute
+                    </option>
+                    <option id="interval2" value="300000" selected>5 minutes
+                    </option>
+                    <option id="interval3" value="600000">10 minutes
+                    </option>
+                </select>
+            </p>
+            <p>
 
-    </div>
-
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
-    </script>
-    <script>
-        // open the dialog 
-        $(document).ready(function () {
-            $("input#login").click(function () {
-                $("div#mydialog").attr("aria-hidden", "false");
-                $("div#mydialog").removeClass("hidden");
-                $("div#main1").attr("tabindex", "-1");
-                $("#dialogheader").focus();
-            });
-            // repeat for the keyboard accessibility for all buttons, enter makes it click...
-            $("input[type='button']").keypress(function (ev) {
-                if (ev.which == 13) {
-                    $(this).click();
-                }
-            });
-
-            $("div.whitebox").keydown(function (ev) {
-                if (ev.which == 27) {
-                    $("input#cancel").click();
-                }
-            });
-
-            // close the dialog and put the focus back to were it was 
-            $("input#cancel").click(function () {
-                $("div#mydialog").attr("aria-hidden", "true");
-                $("div#mydialog").addClass("hidden");
-                $("div#main1").attr("tabindex", "0");
-                $("input#login").focus();
-                ev.preventDefault();
-            });
-
-            // repeat for the ok button
-            $("input#ok").click(function () {
-                $("input#cancel").click();
-            });
-
-
-            // repeat for the esc key
+                <button onClick="setAlert()">set alert</button> <button onClick="setRudeAlert()">set rude alert</button>
+                <button onClick="stopAlert()">stop rude alert</button>
+        </fieldset>
+        </p>
+        <div class="alerts" aria-hidden="true" id="myAlert" aria-live="polite">
+            relax</div>
+        <div class="rude" aria-hidden="true" id="myRudeAlert" aria-live="assertive" aria-atomic="false"
+            aria-relevant="additions">
+            relax</div>
 
 
 
-            // trap the focus - basicly if you are on the first item in the dialog and press shift alt go to the last element in the dialog
 
-            $("#dialogheader").keydown(function (ev) {
-                if (ev.shiftKey && ev.which == 9) {
-                    $("#ok").focus();
-                    ev.preventDefault();
-                }
-            });
-        });
+    </body>
 
-
-    </script>
-
-
-</body>
-
-</html>
+    </html>
