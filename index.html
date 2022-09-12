@@ -113,6 +113,36 @@
 
     <BODY>
 
+        <section id="expirationWarning" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="dialog1Title"
+            aria-describedby="dialog1Desc" tabindex="-1">
+            <h1 id="dialog1Title">標題内容</h1>
+            <p id="dialog1Desc" aria-hidden="true" aria-atomic=" true" aria-live="rude" aria-relevant="additions">
+                您的訊息已經送出。</p>
+            <button class="close_btn">關閉</button>
+        </section>
+
+        <button class="btn">show</button>
+
+        <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js"
+            integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
+
+        <script>
+            $(".close_btn").click(function(){
+                $("#expirationWarning").hide();
+            });
+
+            $(".btn").click(function () {
+                $("#expirationWarning").show();
+                var div = document.getElementById("dialog1Desc");
+                $("#dialog1Desc").text("a" + Math.random() * 999999)
+                $("#dialog1Desc").attr("aria-hidden", "false")
+                $("#dialog1Desc").attr('tabindex', -1);
+                $("#dialog1Desc").focus();
+            });
+
+        </script>
+
+
 
 
         <h1>ARIA live regions example</h1>
@@ -236,7 +266,7 @@
                 <p>&nbsp;</p>
                 <p>&nbsp;</p>
             </fieldset>
-            
+
 
     </body>
 
