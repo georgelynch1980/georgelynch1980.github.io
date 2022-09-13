@@ -61,7 +61,7 @@
                 <h1>login</h1>
                 <p id="dialogheader" tabindex="0">你的訊息錯誤！</p>
 
-                <button class="close">關閉</button>
+                <button class="close">關閉1</button>
             </div>
         </div>
 
@@ -76,15 +76,15 @@
             $(".btn2").click(function () {
                 $("#mydialog").attr("aria-hidden", "false");
                 $("#mydialog").show();
-                $("div#main1").attr("tabindex", "-1");
+                
                 $("#dialogheader").focus();
             });
 
             $(".close").click(function () {
                 $("#mydialog").attr("aria-hidden", "false");
                 $("#mydialog").hide();
-                $("div#main1").attr("tabindex", "-1");
-                $("#dialogheader").focus();
+                
+                $(".btn2").focus();
             });
 
 
