@@ -58,16 +58,16 @@
         <div id="mydialog" aria-hidden="true" role="dialog" class="dialogclass" aria-labelledby="dialogheader"
             aria-modal="true" style="display: none;" aria-relevant="additions">
             <div class="whitebox">
-                <h1>login</h1>
-                <p id="dialogheader" tabindex="0">你的訊息錯誤！</p>
+                <h1>'警告'</h1>
+                <p id="dialogheader" tabindex="0">你的資料錯誤！</p>
 
-                <button class="close">關閉1</button>
+                <button class="close">關閉</button>
             </div>
         </div>
 
 
 
-        <button class="btn2">開啟視窗</button>
+        <button class="btn2">送出資料</button>
 
         <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js"
             integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
@@ -84,7 +84,7 @@
                 $("#mydialog").attr("aria-hidden", "false");
                 $("#mydialog").hide();
                 
-                $(".btn2").focus();
+                $("#dialogheader").focusout();
             });
 
 
