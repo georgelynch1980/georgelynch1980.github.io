@@ -56,11 +56,11 @@
     <BODY>
         <h1>這是視窗範例</h1>
 
-        <div id="mydialog" aria-hidden="true" role="dialog" class="dialogclass" aria-labelledby="dialogheader"
-            aria-modal="true" style="display: none;" aria-relevant="additions">
+        <div id="mydialog" aria-hidden="true" role="dialog" class="dialogclass" aria-labelledby="dialog_header"
+            aria-describedby="dialog_contents" aria-modal="true" style="display: none;" aria-relevant="additions">
             <div class="whitebox">
-                <h1 id="dialogheader" tabindex="0">警告</h1>
-                <p>你的資料錯誤！</p>
+                <h1 id="dialog_header">警告</h1>
+                <p id="dialog_contents" tabindex="0">你的資料錯誤！</p>
 
                 <button class="close">關閉</button>
             </div>
@@ -78,14 +78,14 @@
                 $("#mydialog").attr("aria-hidden", "false");
                 $("#mydialog").show();
 
-                $("#dialogheader").focus();
+                $("#dialog_contents").focus();
             });
 
             $(".close").click(function () {
                 $("#mydialog").attr("aria-hidden", "false");
                 $("#mydialog").hide();
 
-                $("#dialogheader").focusout();
+                $("#dialog_contents").focusout();
             });
 
 
