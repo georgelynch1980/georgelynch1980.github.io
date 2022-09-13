@@ -60,6 +60,8 @@
             <div class="whitebox">
                 <h1>login</h1>
                 <p id="dialogheader" tabindex="0">你的訊息錯誤！</p>
+
+                <button class="close">關閉</button>
             </div>
         </div>
 
@@ -77,6 +79,15 @@
                 $("div#main1").attr("tabindex", "-1");
                 $("#dialogheader").focus();
             });
+
+            $(".close").click(function () {
+                $("#mydialog").attr("aria-hidden", "false");
+                $("#mydialog").hide();
+                $("div#main1").attr("tabindex", "-1");
+                $("#dialogheader").focus();
+            });
+
+            
 
             
 
