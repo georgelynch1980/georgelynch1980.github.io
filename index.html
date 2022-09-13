@@ -55,8 +55,19 @@
 
     <BODY>
 
+        <div id="mydialog" aria-hidden="true" role="dialog" class="dialogclass" aria-labelledby="dialogheader"
+            style="display: none;">
+            <div class="whitebox">
+                <h1 id="dialogheader" tabindex="0">login</h1>
+            </div>
+        </div>
+
+        
+
+        <button class="btn2">show dialog</button>
+
         <section id="expirationWarning" style="display: none;" role="dialog" aria-modal="true"
-            aria-labelledby="dialog1Title"  tabindex="-1">
+            aria-labelledby="dialog1Title" tabindex="-1">
             <h1 id="dialog1Title">標題内容</h1>
             <p id="dialog1Desc" aria-hidden="true" aria-atomic=" true" aria-live="rude" aria-relevant="additions">
                 您的訊息已經送出。</p>
@@ -69,18 +80,28 @@
             integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
 
         <script>
+            $(".btn2").click(function () {
+                $("#mydialog").attr("aria-hidden","false");
+                $("#mydialog").show();
+                $("div#main1").attr("tabindex","-1");
+                $("#dialogheader").focus();
+            });
+
             $(".close_btn").click(function () {
                 $("#expirationWarning").hide();
                 $("#dialog1Desc").attr("aria-hidden", "true");
             });
+
+
+            
 
             $(".btn").click(function () {
                 $("#expirationWarning").show();
 
                 $("#dialog1Desc").text("a" + Math.random() * 999999 + "您的訊息已經送出。")
                 $("#dialog1Desc").attr("aria-hidden", "false")
-                // $("#dialog1Desc").attr('tabindex', -1);
-                // $("#dialog1Desc").focus();
+                $("#dialog1Desc").attr('tabindex', -1);
+                $("#dialog1Desc").focus();
             });
 
         </script>
