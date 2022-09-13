@@ -58,13 +58,14 @@
         <div id="mydialog" aria-hidden="true" role="dialog" class="dialogclass" aria-labelledby="dialogheader"
             style="display: none;">
             <div class="whitebox">
-                <h1 id="dialogheader" tabindex="0">login</h1>
+                <h1>login</h1>
+                <p id="dialogheader" tabindex="0">你的訊息錯誤！</p>
             </div>
         </div>
 
-        
 
-        <button class="btn2">show dialog</button>
+
+        <button class="btn2">開啟視窗</button>
 
         <section id="expirationWarning" style="display: none;" role="dialog" aria-modal="true"
             aria-labelledby="dialog1Title" tabindex="-1">
@@ -81,9 +82,9 @@
 
         <script>
             $(".btn2").click(function () {
-                $("#mydialog").attr("aria-hidden","false");
+                $("#mydialog").attr("aria-hidden", "false");
                 $("#mydialog").show();
-                $("div#main1").attr("tabindex","-1");
+                $("div#main1").attr("tabindex", "-1");
                 $("#dialogheader").focus();
             });
 
@@ -93,7 +94,7 @@
             });
 
 
-            
+
 
             $(".btn").click(function () {
                 $("#expirationWarning").show();
