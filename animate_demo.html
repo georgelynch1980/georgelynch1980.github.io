@@ -1,30 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-    </head>
-    <body>
-        <div id="a1" style="width: 90px; height: 90px;background-color: #3f51b5;"></div>
-        <div id="a2" style="width: 90px; height: 90px;background-color: #3f51b5;"></div>
-        <div id="a3" style="width: 90px; height: 90px;background-color: #3f51b5;"></div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
 
-        <script>
-            var tl = gsap.timeline({  });
-            tl.fromTo("#a1", {opacity: 0,x: 100}, {opacity: 1,x: 200, duration: 1});
-            tl.fromTo("#a2", {opacity: 0,x: 100}, {opacity: 1,x: 200, duration: 1}, "-=0.3");
-            tl.fromTo("#a3", {opacity: 0,x: 100}, {opacity: 1,x: 200, duration: 1}, "-=0.3");
-            tl.pause();
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        #bg {
+
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+
+        .top {
+            width: 100%;
+            position: relative;
+            top: 0px;
+            left: 0px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .top .top_content {
+            position: relative;
+            top: 0px;
+            left: 0px;
+            width: 668px;
+            height: 839px;
+        }
+
+        .top .top_content .top_title {
+            position: absolute;
+            top: 163px;
+            left: 26px;
+        }
+
+        .top .top_content .top_people {
+            position: absolute;
+            top: 488px;
+            left: 85px;
+        }
+
+        .top .top_content .top_talk1 {
+            position: absolute;
+            top: 611px;
+            left: 10px;
+        }
+
+        .top .top_content .top_talk2 {
+            position: absolute;
+            top: 497px;
+            left: 322px;
+        }
+
+        .top .top_content .top_talk3 {
+            position: absolute;
+            top: 480px;
+            left: 500px;
+        }
+
+        .top .top_bg {
+            position: absolute;
+            top: 50%;
+            margin-top: 65px;
+            width: 100%;
+            height: 350px;
+            overflow: hidden;
+        }
+
+        .top .top_bg .pop1 {
+            position: absolute;
+            top: -120px;
+            left: 1310px;
+        }
+
+        .top .top_bg .pop2 {
+            position: absolute;
+            top: 30px;
+            left: 1000px;
+
+        }
+
+        .top .top_bg .pop3 {
+            position: absolute;
+            top: 10px;
+            left: 400px;
+        }
+
+        .top .top_bg .pop4 {
+            position: absolute;
+            top: 44px;
+            left: 149px;
+        }
+
+        .top .top_bg .pop5 {
+            position: absolute;
+            top: 31px;
+            left: -110px;
+        }
+
+        .top .top_bg .pop6 {
+            position: absolute;
+            top: -149px;
+            left: 552px;
+        }
+
+        .top .top_bg .pop7 {
+            position: absolute;
+            top: -75px;
+            left: 1122px;
+        }
+
+        .top .top_bg .pop8 {
+            position: absolute;
+            top: 51px;
+            left: 1712px;
+        }
+
+        .top .top_bg .pop9 {
+            position: absolute;
+            top: -22px;
+            left: 82px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div id="bg">
+        <img width="1920" src="img/top/2022-10-07_102205.jpg" alt="">
+    </div> -->
+    <div class="top">
+        <div class="top_bg">
+            <div class="pop pop1">
+                <img src="img/top/pop1.svg" alt="">
+            </div>
+            <!-- <div class="pop pop2">
+                <img src="img/top/pop2.svg" alt="">
+            </div> -->
+
+            <div class="pop pop3">
+                <img src="img/top/pop3.svg" alt="">
+            </div>
+
+            <div class="pop pop4">
+                <img src="img/top/pop4.svg" alt="">
+            </div>
+
+            <div class="pop pop5">
+                <img src="img/top/pop5.svg" alt="">
+            </div>
+
+            <!-- <div class="pop pop6">
+                <img src="img/top/pop1.svg" alt="">
+            </div> -->
+
+            <div class="pop pop7">
+                <img src="img/top/pop3.svg" alt="">
+            </div>
+
+            <div class="pop pop8">
+                <img src="img/top/pop3.svg" alt="">
+            </div>
+
+            <div class="pop pop9">
+                <img src="img/top/pop6.svg" alt="">
+            </div>
 
 
-            setTimeout(function(){
-                tl.resume();
-            },2000)
-        </script>
+        </div>
+        <div class="top_content">
+            <div class="top_title">
+                <img src="img/top/title.svg" alt="">
+            </div>
+            <div class="top_people">
+                <img src="img/top/people.svg" alt="">
+            </div>
 
-        <script></script>
-    </body>
+            <div class="top_talk1">
+                <img src="img/top/talk1.svg" alt="">
+            </div>
+            <div class="top_talk2">
+                <img src="img/top/talk2.svg" alt="">
+            </div>
+            <div class="top_talk3">
+                <img src="img/top/talk3.svg" alt="">
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+
+    <script>
+        var tl = gsap.timeline({
+            onComplete: function () {
+                t2.resume();
+            }
+        });
+        tl.fromTo(".top_people", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" });
+        tl.fromTo(".top_talk1", { scale: 0, opacity: 0, x: 30 }, { scale: 1, opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, "+=0.3");
+        tl.fromTo(".top_talk2", { scale: 0, opacity: 0, y: 30 }, { scale: 1, opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, "+=0.8");
+        tl.fromTo(".top_talk3", { scale: 0, opacity: 0, y: 30 }, { scale: 1, opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, "+=0.8");
+        tl.fromTo(".top_title", { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, "+=0.2");
+
+        tl.pause();
+        tl.resume();
+
+
+        
+        var t2 = gsap.timeline({repeat: 99999,repeatDelay:1});
+        t2.fromTo(".pop1", { x: 0, y: 0, scale: 0, opacity: 0, }, { x: 0, y: 0, scale: 0.6, opacity: 1, duration: 1.3, ease: "back.out(1)" });       
+        t2.fromTo(".pop3", { x: 0, y: 0, scale: 0, opacity: 0, }, { x: 0, y: 0, scale: 0.6, opacity: 1, duration: 1.3, ease: "back.out(1)" }, "-=1.0");
+        t2.fromTo(".pop4", { x: 0, y: 0, scale: 0, opacity: 0, }, { x: 0, y: 0, scale: 0.6, opacity: 1, duration: 1.3, ease: "back.out(1)" }, "-=1.1");
+        t2.fromTo(".pop5", { x: 0, y: 0, scale: 0, opacity: 0 }, { x: 0, y: 0, scale: 0.6, opacity: 1, duration: 1.3, ease: "back.out(1)" }, "-=1.2");       
+        t2.fromTo(".pop7", { x: 0, y: 0, scale: 0, opacity: 0 }, { x: 0, y: 0, scale: 0.6, opacity: 1, duration: 1.3, ease: "back.out(1)" }, "-=1.0");
+        t2.fromTo(".pop8", { x: 0, y: 0, scale: 0, opacity: 0 }, { x: 0, y: 0, scale: 0.6, opacity: 1, duration: 1.3, ease: "back.out(1)" }, "-=1.1");
+        t2.fromTo(".pop9", { x: 0, y: 0, scale: 0, opacity: 0 }, { x: 0, y: 0, scale: 0.4, opacity: 1, duration: 1.3, ease: "back.out(1)" }, "-=1.2");
+
+        t2.fromTo(".pop", { opacity: 1, }, { opacity: 0, duration: 0.6 }, "+=1.2");
+
+        t2.pause();
+        //t2.resume();
+
+
+
+    </script>
+
+    <script></script>
+</body>
+
 </html>
