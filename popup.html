@@ -1,78 +1,72 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-        .bg_box {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-
-        .popup_container {
-            position: relative;
-            top: 0px;
-            left: 0px;
-            right: 0px;
-            bottom: 0px;
-            width: 100%;
-            height: 98vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .pc{
-            display: block;
-        }
-        .sp{
-            display: none;
-        }
-        @media screen and (max-width: 1024px) {
-            .pc{
-                display: none;
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .bg_box {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                background-color: rgba(0, 0, 0, 0.5);
             }
-            .sp{
+
+            .popup_container {
+                position: relative;
+                top: 0px;
+                left: 0px;
+                right: 0px;
+                bottom: 0px;
+                width: 100%;
+                height: 98vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .pc {
                 display: block;
             }
-   
-        }
-    </style>
-</head>
+            .sp {
+                display: none;
+            }
+            @media screen and (max-width: 1024px) {
+                .pc {
+                    display: none;
+                }
+                .sp {
+                    display: block;
+                }
+            }
+        </style>
+    </head>
 
-<body>
-    <div class="bg_box">
+    <body>
+        <div class="popup_container">
+            <!-- <img class="pc" src="img/top/popu_container.svg" alt="" />
+            <img class="sp" src="img/popup/container.svg" alt="" /> -->
+            <img
+                class="pc"
+                src="003.png"
+                alt=""
+                style="
+                    width: 730px;
+                    position: absolute;
+                    top: 50%;
+                    transform: translate(0px, -48%);
+                "
+            />
+            <img class="sp" src="001.png" alt="" style="width: 100%;"  />
+        </div>
 
-    </div>
-    <div class="popup_container">
-        <img class="pc" src="img/top/popu_container.svg" alt="">
-        <img class="sp" src="img/popup/container.svg" alt="">
-        <img class="pc" src="img/popup/clip_ image.png" alt="" style="width: 730px;
-        position: absolute;
-        top: 50%;
-        transform: translate(0px, -48%);">
-        <img class="sp" src="img/popup/clip_ image_sp.png" alt="">
-    </div>
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js"
-        integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
-
-    <script>
-
-
-
-
-    </script>
-
-
-</body>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+        <script
+            src="https://code.jquery.com/jquery-3.6.1.slim.min.js"
+            integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA="
+            crossorigin="anonymous"
+        ></script>
+    </body>
 </html>
